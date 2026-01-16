@@ -1,8 +1,6 @@
-# Node.js 18 is EOL on April 30, 2025
+# Node.js 24 is EOL on April 30, 2028
 # https://github.com/nodejs/release#release-schedule
-# Note: Library currently does not run under Node.js 20, will need to pull
-#       changes from upstream closer to v18 EOL
-runtime: nodejs18
+runtime: nodejs24
 
 # Capability table: https://cloud.google.com/appengine/docs/standard#instance_classes
 # Cost table: https://cloud.google.com/appengine/pricing (go to us-west4)
