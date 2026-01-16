@@ -1,3 +1,7 @@
+@use "theme" as *;
+@use "vars" as *;
+@use "mixins";
+@use "sass:color";
 
 // Top Banner
 //------------------------------------------------------------------------------
@@ -65,10 +69,10 @@
       position: fixed;
       top: 9px;
 
-      @include tablet{
+      @include mixins.tablet{
         right: 20px;
       }
-      @include desktop{
+      @include mixins.desktop{
         right: 20px;
       }
     }
@@ -86,10 +90,10 @@
   margin: 15px 0;
   display: none;
 
-  @include tablet{
+  @include mixins.tablet{
     display: block;
   }
-  @include desktop{
+  @include mixins.desktop{
     display: block;
   }
 }
@@ -121,10 +125,10 @@
   vertical-align: middle;
   white-space: nowrap;
 
-  @include tablet{
+  @include mixins.tablet{
     width: calc(100% - 20px);
   }
-  @include desktop{
+  @include mixins.desktop{
     width: calc(100% - 20px);
   }
 
@@ -266,7 +270,7 @@
     }
     &:hover, &:active, &:target {
       text-decoration: none;
-      background: darken($elem-active-link-color, 30%);
+      background: color.scale($elem-active-link-color, $lightness: -30%);
 
       button.btn-user-initial {
         background: $black;
@@ -280,10 +284,10 @@
     margin-right: 5px;
     display: none;
 
-    @include tablet{
+    @include mixins.tablet{
       display: inline-block;
     }
-    @include desktop{
+    @include mixins.desktop{
       display: inline-block;
     }
   }
@@ -343,11 +347,11 @@
   float: right;
 	position: relative;
 
-  @include tablet{
+  @include mixins.tablet{
     width: 300px;
     padding: 20px;
   }
-  @include desktop{
+  @include mixins.desktop{
     width: 300px;
     padding: 20px;
   }
@@ -377,11 +381,11 @@
     line-height: 30px;
     -webkit-font-smoothing: antialiased;
 
-    @include tablet{
+    @include mixins.tablet{
       margin: 10px auto;
       line-height: 32px;
     }
-    @include desktop{
+    @include mixins.desktop{
       margin: 10px auto;
       line-height: 32px;
     }
@@ -407,10 +411,10 @@
       margin: 0px 0 5px 0;
       font-size: 15px;
 
-      @include tablet{
+      @include mixins.tablet{
         margin: 13px 0;
       }
-      @include desktop{
+      @include mixins.desktop{
         margin: 13px 0;
       }
 

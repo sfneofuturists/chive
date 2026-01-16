@@ -8,7 +8,7 @@ const cache = require('./cache')
 const log = require('./logger')
 const {getAuth} = require('./auth')
 const {isSupported} = require('./utils')
-const docs = require('./docs')
+const {cleanName, slugify} = require('./text')
 
 const driveType = process.env.DRIVE_TYPE
 const driveId = process.env.DRIVE_ID
@@ -170,9 +170,8 @@ function produceTree(files, firstParent) {
     const {parents, id, name, mimeType} = resource
 
     // prepare data for the individual file and store later for reference
-    // FIXME: consider how to remove circular dependency here.
-    const prettyName = docs.cleanName(name)
-    const slug = docs.slugify(prettyName)
+    const prettyName = cleanName(name)
+    const slug = slugify(prettyName)
     const tagString = (name.match(/\|\s*([^|]+)$/i) || [])[1] || ''
     const tags = tagString.split(',')
       .map((t) => t.trim().toLowerCase())
@@ -241,7 +240,7 @@ async function setRedirects(oldDocsInfo, newDocsInfo) {
     // if no lastPath, file is a new addition to the drive
     if (currPath && lastPath && currPath !== lastPath) {
       log.info(`Doc ${id} moved, REDIRECT ${lastPath} → ${currPath}`)
-      cache.add(lastPath, new Date(), {redirect: currPath})
+      cache.add(lastPath, new Date(), {redirect: currPath}, 0)
     }
   })
 }

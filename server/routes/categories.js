@@ -4,8 +4,9 @@ const router = require('express-promise-router')()
 
 const log = require('../logger')
 const {getMeta} = require('../list')
-const {fetchDoc, cleanName} = require('../docs')
-const {getTemplates, sortDocs, stringTemplate} = require('../utils')
+const {fetchDoc} = require('../docs')
+const {getTemplates, sortDocs, stringTemplate, formatUrl, pathPrefix} = require('../utils')
+const {cleanName} = require('../text')
 const {parseUrl} = require('../urlParser')
 
 router.get('*', handleCategory)
@@ -43,7 +44,9 @@ async function handleCategory(req, res) {
     editLink: meta.mimeType === 'text/html' ? meta.folder.webViewLink : meta.webViewLink,
     id,
     template: stringTemplate,
-    duplicates
+    duplicates,
+    formatUrl,
+    pathPrefix
   })
 
   // if this is a folder, just render from the generic data
@@ -71,7 +74,9 @@ async function handleCategory(req, res) {
     content: html,
     byline,
     createdBy,
-    sections
+    sections,
+    formatUrl,
+    pathPrefix
   })
 
   res.format({
