@@ -1,3 +1,7 @@
+@use "theme" as *;
+@use "vars" as *;
+@use "mixins";
+
 // Basic Styling
 //------------------------------------------------------------------------------
 body {
@@ -75,12 +79,12 @@ button:focus {
   color: $btn-default-text-color;
   cursor: pointer;
 
-  @include tablet{
+  @include mixins.tablet{
     font-size: 15px;
     line-height: 20px;
     padding: 5px 10px;
   }
-  @include desktop{
+  @include mixins.desktop{
     font-size: 15px;
     line-height: 20px;
     padding: 5px 10px;
@@ -93,10 +97,10 @@ button:focus {
   margin: 4px 0 0 0;
   -webkit-font-smoothing: antialiased;
 
-  @include tablet{
+  @include mixins.tablet{
     margin: 3px 0 0 0;
   }
-  @include desktop{
+  @include mixins.desktop{
     margin: 3px 0 0 0;
   }
 

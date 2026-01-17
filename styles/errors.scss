@@ -4,15 +4,15 @@
 // the authentication layer.)
 
 // top level templating values that can be overridden
-@import "vars";
-@import "theme";
+@use "vars" as *;
+@use "theme" as *;
 
 // core layout styles rarely overridden
-@import "core/mixins";
-@import "core/base";
-@import "core/furniture";
-@import "core/pages";
-@import "core/errata";
+@use "core/mixins" as *;
+@use "core/base" as *;
+@use "core/furniture" as *;
+@use "core/pages" as *;
+@use "core/categories" as *;
 
 // final stylesheet with any additional styles for custom logic
-@import "custom";
+@use "custom" as *;

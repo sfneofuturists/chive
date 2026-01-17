@@ -1,3 +1,7 @@
+@use "theme" as *;
+@use "vars" as *;
+@use "mixins";
+
 
 // Upper Body
 //------------------------------------------------------------------------------
@@ -28,12 +32,12 @@
     color: $black;
     margin: 20px 0 5px;
 
-    @include tablet {
+    @include mixins.tablet {
       font-size: 42px;
       line-height: 48px;
       margin: 40px 0 5px;
     }
-    @include desktop {
+    @include mixins.desktop {
       font-size: 44px;
       line-height: 48px;
       margin: 40px 0 5px;
@@ -106,10 +110,10 @@
     height: 90.9%;
     overflow: auto;
 
-    @include tablet{
+    @include mixins.tablet{
   		display: none;
   	}
-  	@include desktop{
+  	@include mixins.desktop{
   		display: block;
       padding: 10px 0;
       width: 180px;
@@ -230,11 +234,11 @@
       font-size: 1rem;
       line-height: 1.4;
 
-      @include tablet{
+      @include mixins.tablet{
         font-size: 1.125rem;
         line-height: 1.5;
       }
-      @include desktop{
+      @include mixins.desktop{
         font-size: 1.125rem;
         line-height: 1.5;
       }
@@ -273,10 +277,10 @@
       margin: 20px auto;
       cursor: pointer; // images can be opened in a modal
 
-      @include tablet{
+      @include mixins.tablet{
         max-width: 580px;
       }
-      @include desktop{
+      @include mixins.desktop{
         max-width: 580px;
       }
     }
@@ -482,10 +486,10 @@
         font-size: 15px;
         margin: 0;
         line-height: 24px;
-        @include tablet{
+        @include mixins.tablet{
 
         }
-        @include desktop{
+        @include mixins.desktop{
           line-height: 32px;
         }
       }

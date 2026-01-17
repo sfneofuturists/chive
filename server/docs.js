@@ -2,39 +2,19 @@
 
 const {google} = require('googleapis')
 const cheerio = require('cheerio')
-const slugify = require('slugify')
 const xlsx = require('xlsx')
 
 const cache = require('./cache')
 const formatter = require('./formatter')
 const log = require('./logger')
 const {getAuth} = require('./auth')
+const {slugify} = require('./text')
 
 const supportedTypes = new Set(['document', 'spreadsheet', 'text/html'])
 
 const revisionSupportedArr = ['document', 'spreadsheet', 'presentation']
 const revisionSupported = new Set(revisionSupportedArr)
 const revisionMimeSupported = new Set(revisionSupportedArr.map((x) => `application/vnd.google-apps.${x}`))
-
-exports.cleanName = (name = '') => {
-  return name
-    .trim()
-    // eslint-disable-next-line no-useless-escape
-    .replace(/^(\d+\s+[-–—_]+\s+)([^\d\/\-^\s]+)/, '$2') // remove leading numbers and delimiters
-    .replace(/\s*\|\s*([^|]+)$/i, '') // remove trailing pipe and tags
-
-    // commented out for SF Neo-Futurists b/c some play titles use periods in
-    // ways that resemble file extensions.
-    //.replace(/\.[^.]+$/, '') // remove file extensions
-}
-
-exports.slugify = (text = '') => {
-  // convert non alpha numeric into whitespace, rather than removing
-  const alphaNumeric = text.replace(/[^\p{L}\p{N}]+/ug, ' ')
-  return slugify(alphaNumeric, {
-    lower: true
-  })
-}
 
 exports.fetchDoc = async (id, resourceType, req) => {
   const data = await cache.get(id)
