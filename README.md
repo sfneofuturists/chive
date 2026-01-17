@@ -32,7 +32,10 @@ SESSION_SECRET=REPLACEME
 # Also see https://expressjs.com/en/guide/behind-proxies.html
 TRUST_PROXY=true
 
-# NB: APPROVED_DOMAINS not needed for our version of the project
+# allow-list of fully-qualified email addresses or domains
+# we might want to improve access on this at some point, pretty sure right now anyone can access chive?
+# no real reason to limit to just gmail/hotmail either
+APPROVED_DOMAINS="gmail.com,hotmail.com"
 
 # team or folder (we're not using GSuite, so has to be folder)
 DRIVE_TYPE=folder
